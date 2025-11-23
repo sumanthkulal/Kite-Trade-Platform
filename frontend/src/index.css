@@ -1,0 +1,14 @@
+.nav-link{
+    margin-left: 40px;
+}
+
+#supportHero{
+    background-color: rgb(56, 126, 209);
+    color: white;
+}
+
+.custom-input-focus:focus {
+  border-color: #ced4da; /* Reverts to the default Bootstrap border color */
+  box-shadow: none;      /* Removes the blue box shadow */
+}
+
