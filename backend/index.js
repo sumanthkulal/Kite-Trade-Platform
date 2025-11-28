@@ -7,45 +7,30 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
+const cors = require("cors");
+
+app.use(cors());
+
+const bodyParser=require("body-parser")
+app.use(bodyParser.json())
+
 // Models
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
 
-// ---------- ROUTE ----------
-// app.get("/addPosition", async (req, res) => {
-//   let tempPositions = [
-//     {
-//       product: "CNC",
-//       name: "EVEREADY",
-//       qty: 2,
-//       avg: 316.27,
-//       price: 312.35,
-//       net: "+0.58%",
-//       day: "-1.24%",
-//       isLoss: true,
-//     },
-//     {
-//       product: "CNC",
-//       name: "JUBLFOOD",
-//       qty: 1,
-//       avg: 3124.75,
-//       price: 3082.65,
-//       net: "+10.04%",
-//       day: "-1.35%",
-//       isLoss: true,
-//     },
-//   ];
-
-//   try {
-//     await PositionsModel.insertMany(tempPositions);
-//     res.send("Positions added!");
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Error adding positions");
-//   }
-// });
 
 // ---------- CONNECT TO DB THEN START SERVER ----------
+
+app.get("/allHoldings",async(req,res)=>{
+    let allHoldings=await HoldingsModel.find({})
+    res.json(allHoldings)
+   
+})
+
+app.get("/allPositions",async(req,res)=>{
+    let allPositions=await PositionsModel.find({})
+    res.json(allPositions);
+})
 mongoose
   .connect(uri)
   .then(() => {
