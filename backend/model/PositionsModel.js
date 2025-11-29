@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const PositionsSchema = require("../schemas/PositionsSchema");
+const { model } = require("mongoose");
+const { PositionsSchema } = require("../schemas/PositionsSchema"); 
 
-const PositionsModel = mongoose.model("position", PositionsSchema);
+const PositionsModel = model("position", PositionsSchema);
 
-module.exports = PositionsModel;
+// ✅ CORRECT: Export as an object
+module.exports = { PositionsModel };

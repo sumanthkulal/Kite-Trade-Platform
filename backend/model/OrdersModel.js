@@ -1,6 +1,11 @@
-const model=require('mongoose')
+// 1. Destructure 'model' from mongoose
+const { model } = require("mongoose"); 
 
-const OrdersSchema=require('../schemas/OrdersSchema')
-const OrdersModel=new model("oder",OrdersSchema)
+// 2. Import the Schema we just fixed above
+const { OrdersSchema } = require("../schemas/OrdersSchema");
 
-module.exports={OrdersModel}
+// 3. Create the model
+const OrdersModel = model("order", OrdersSchema);
+
+// 4. Export it
+module.exports = { OrdersModel };
